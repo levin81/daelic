@@ -3,6 +3,9 @@ package com.github.levin81.daelic.druid.granularity;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public class SimpleGranularity implements Granularity {
+
+    private final String type = "simple";
+
     public static final SimpleGranularity NONE = new SimpleGranularity("none");
     public static final SimpleGranularity ALL = new SimpleGranularity("all");
     public static final SimpleGranularity SECOND = new SimpleGranularity("second");
@@ -24,7 +27,7 @@ public class SimpleGranularity implements Granularity {
 
     @Override
     public String getType() {
-        return "simple";
+        return type;
     }
 
     @JsonValue

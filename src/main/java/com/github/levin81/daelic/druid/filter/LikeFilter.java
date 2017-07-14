@@ -3,7 +3,7 @@ package com.github.levin81.daelic.druid.filter;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 import com.github.levin81.daelic.util.Properties;
 
-/***
+/**
  * Like filters can be used for basic wildcard searches. They are equivalent to the SQL LIKE operator. Special
  * characters supported are "%" (matches any number of characters) and "_" (matches any one character).
  */

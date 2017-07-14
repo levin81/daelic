@@ -4,12 +4,14 @@ import com.github.levin81.daelic.druid.SortingOrder;
 
 public class DimensionTopNMetric implements TopNMetric {
 
+    private final String type = "dimension";
+
     private String ordering = SortingOrder.LEXICOGRAPHIC;
     private String previousStop;
 
     @Override
     public String getType() {
-        return "dimension";
+        return type;
     }
 
     public String getOrdering() {

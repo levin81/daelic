@@ -2,6 +2,7 @@ package com.github.levin81.daelic.druid;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
+import com.github.levin81.daelic.druid.context.QueryContext;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
@@ -14,6 +15,8 @@ import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -30,12 +33,13 @@ public class TopN {
     private List<Aggregator> aggregations;
     private List<PostAggregator> postAggregations;
     private List<Interval> intervals;
+    private QueryContext context;
 
     TopN(DataSource dataSource, Dimension dimension, int threshold, TopNMetric metric, Granularity granularity, Filter filter,
-         List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals) {
+         List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals, QueryContext context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimension, "Dimension is a required property");
-        Properties.assertRequired(metric, "SortingOrder is a required property");
+        Properties.assertRequired(metric, "Metric is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
         Properties.assertRequired(intervals, "Intervals is a required property");
 
@@ -54,6 +58,7 @@ public class TopN {
         this.aggregations = aggregations;
         this.postAggregations = postAggregations;
         this.intervals = intervals;
+        this.context = context;
     }
 
     public static TopNBuilder builder() {
@@ -71,6 +76,7 @@ public class TopN {
         private List<Aggregator> aggregations;
         private List<PostAggregator> postAggregations;
         private List<Interval> intervals;
+        private QueryContext context;
 
         TopNBuilder() {
 
@@ -126,8 +132,26 @@ public class TopN {
             return this;
         }
 
+        public TopNBuilder addAggregator(Aggregator aggregator) {
+            if (this.aggregations == null) {
+                this.aggregations = new ArrayList<>();
+            }
+
+            this.aggregations.add(aggregator);
+            return this;
+        }
+
         public TopNBuilder withPostAggregations(List<PostAggregator> postAggregations) {
             this.postAggregations = postAggregations;
+            return this;
+        }
+
+        public TopNBuilder addPostAggregator(PostAggregator postAggregator) {
+            if (this.postAggregations == null) {
+                this.postAggregations = new ArrayList<>();
+            }
+
+            this.postAggregations.add(postAggregator);
             return this;
         }
 
@@ -136,9 +160,23 @@ public class TopN {
             return this;
         }
 
+        public TopNBuilder addInterval(Interval interval) {
+            if (this.intervals == null) {
+                this.intervals = new ArrayList<>();
+            }
+
+            this.intervals.add(interval);
+            return this;
+        }
+
+        public TopNBuilder withContext(QueryContext context) {
+            this.context = context;
+            return this;
+        }
+
         public TopN build() {
             return new TopN(dataSource, dimension, threshold, metric, granularity, filter, aggregations,
-                    postAggregations, intervals);
+                    postAggregations, intervals, context);
         }
     }
 }

@@ -3,7 +3,7 @@ package com.github.levin81.daelic.druid.aggregator;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.util.Properties;
 
-/***
+/**
  * A filtered aggregator wraps any given aggregator, but only aggregates the values for which the given dimension
  * filter matches.
  *

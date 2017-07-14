@@ -1,11 +1,17 @@
 package com.github.levin81.daelic.druid.granularity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.github.levin81.daelic.util.Properties;
 
+import java.time.OffsetDateTime;
+import java.time.Period;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-/***
+/**
  * Period granularities are specified as arbitrary period combinations of years, months, weeks, hours, minutes and
  * seconds (e.g. P2W, P3M, PT1H30M, PT0.750S) in ISO8601 format. They support specifying a time zone which determines
  * where period boundaries start as well as the timezone of the returned timestamps. By default, years start on the
@@ -17,11 +23,12 @@ import java.time.ZonedDateTime;
 public class PeriodGranularity implements Granularity {
 
     private final String type = "period";
-    private String period;
-    private String timeZone;
-    private ZonedDateTime origin;
 
-    PeriodGranularity(String period, String timeZone, ZonedDateTime origin) {
+    private Period period;
+    private ZoneId timeZone;
+    private OffsetDateTime origin;
+
+    PeriodGranularity(Period period, ZoneId timeZone, OffsetDateTime origin) {
         Properties.assertRequired(period, "Period is a required property");
 
         this.period = period;
@@ -34,15 +41,18 @@ public class PeriodGranularity implements Granularity {
         return type;
     }
 
-    public String getPeriod() {
+    @JsonSerialize(using = ToStringSerializer.class)
+    public Period getPeriod() {
         return period;
     }
 
-    public String getTimeZone() {
+    @JsonSerialize(using = ToStringSerializer.class)
+    public ZoneId getTimeZone() {
         return timeZone;
     }
 
-    public ZonedDateTime getOrigin() {
+    @JsonSerialize(using = ToStringSerializer.class)
+    public OffsetDateTime getOrigin() {
         return origin;
     }
 
@@ -52,25 +62,36 @@ public class PeriodGranularity implements Granularity {
 
     public static class PeriodGranularityBuilder {
 
-        private String period;
-        private String timeZone;
-        private ZonedDateTime origin;
+        private Period period;
+        private ZoneId timeZone;
+        private OffsetDateTime origin;
 
         PeriodGranularityBuilder() {
 
         }
 
-        public PeriodGranularityBuilder withPeriod(String period) {
+        public PeriodGranularityBuilder withPeriod(Period period) {
             this.period = period;
             return this;
         }
 
         public PeriodGranularityBuilder withTimeZone(String timeZone) {
+            this.timeZone = ZoneId.of(timeZone);
+            return this;
+        }
+
+        public PeriodGranularityBuilder withTimeZone(ZoneId timeZone) {
             this.timeZone = timeZone;
             return this;
         }
 
-        public PeriodGranularityBuilder withOrigin(ZonedDateTime origin) {
+        public PeriodGranularityBuilder withOriginAndTimeZone(ZonedDateTime origin) {
+            this.origin = OffsetDateTime.from(origin);
+            this.timeZone = origin.getZone();
+            return this;
+        }
+
+        public PeriodGranularityBuilder withOrigin(OffsetDateTime origin) {
             this.origin = origin;
             return this;
         }

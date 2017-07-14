@@ -2,6 +2,7 @@ package com.github.levin81.daelic.druid.filter;
 
 import com.github.levin81.daelic.util.Properties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrFilter implements Filter {
@@ -39,6 +40,15 @@ public class OrFilter implements Filter {
 
         public OrFilterBuilder withFields(List<Filter> fields) {
             this.fields = fields;
+            return this;
+        }
+
+        public OrFilterBuilder addField(Filter field) {
+            if (this.fields == null) {
+                this.fields = new ArrayList<>();
+            }
+
+            this.fields.add(field);
             return this;
         }
 

@@ -3,6 +3,7 @@ package com.github.levin81.daelic.druid.filter;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 import com.github.levin81.daelic.util.Properties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AndFilter implements Filter {
@@ -47,6 +48,15 @@ public class AndFilter implements Filter {
 
         public AndFilterBuilder withFields(List<Filter> fields) {
             this.fields = fields;
+            return this;
+        }
+
+        public AndFilterBuilder addField(Filter field) {
+            if (this.fields == null) {
+                this.fields = new ArrayList<>();
+            }
+
+            this.fields.add(field);
             return this;
         }
 

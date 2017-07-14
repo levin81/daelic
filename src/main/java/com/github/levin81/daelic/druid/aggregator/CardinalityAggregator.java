@@ -4,7 +4,7 @@ import com.github.levin81.daelic.util.Properties;
 
 import java.util.List;
 
-/***
+/**
  * Computes the cardinality of a set of Druid dimensions, using HyperLogLog to estimate the cardinality. Please note
  * that this aggregator will be much slower than indexing a column with the hyperUnique aggregator. This aggregator
  * also runs over a dimension column, which means the string dimension cannot be removed from the dataset to improve

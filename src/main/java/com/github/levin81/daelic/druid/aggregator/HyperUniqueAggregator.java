@@ -2,7 +2,7 @@ package com.github.levin81.daelic.druid.aggregator;
 
 import com.github.levin81.daelic.util.Properties;
 
-/***
+/**
  * Uses HyperLogLog to compute the estimated cardinality of a dimension that has been aggregated as a "hyperUnique"
  * metric at indexing time.
  */

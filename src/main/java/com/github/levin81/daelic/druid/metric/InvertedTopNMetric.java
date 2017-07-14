@@ -2,11 +2,13 @@ package com.github.levin81.daelic.druid.metric;
 
 public class InvertedTopNMetric implements TopNMetric {
 
+    private final String type = "inverted";
+
     private String metric;
 
     @Override
     public String getType() {
-        return "inverted";
+        return type;
     }
 
     public String getMetric() {

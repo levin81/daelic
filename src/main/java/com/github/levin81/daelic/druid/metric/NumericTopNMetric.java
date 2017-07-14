@@ -2,11 +2,13 @@ package com.github.levin81.daelic.druid.metric;
 
 public class NumericTopNMetric implements TopNMetric {
 
+    private final String type = "numeric";
+
     private String metric;
 
     @Override
     public String getType() {
-        return "numeric";
+        return type;
     }
 
     public String getMetric() {

@@ -2,6 +2,7 @@ package com.github.levin81.daelic.druid.datasource;
 
 import com.github.levin81.daelic.util.Properties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -11,10 +12,11 @@ public class UnionDataSource implements DataSource {
 
     private final String type = "union";
 
-    private List<String> dataSources;
+    private List<DataSource> dataSources;
 
-    UnionDataSource(List<String> dataSources) {
+    UnionDataSource(List<DataSource> dataSources) {
         Properties.assertRequired(dataSources, "DataSources is a required property");
+
         this.dataSources = dataSources;
     }
 
@@ -23,7 +25,7 @@ public class UnionDataSource implements DataSource {
         return type;
     }
 
-    public List<String> getDataSources() {
+    public List<DataSource> getDataSources() {
         return dataSources;
     }
 
@@ -32,14 +34,23 @@ public class UnionDataSource implements DataSource {
     }
 
     public static class UnionDataSourceBuilder {
-        private List<String> dataSources;
+        private List<DataSource> dataSources;
 
         UnionDataSourceBuilder() {
 
         }
 
-        public UnionDataSourceBuilder withDataSources(List<String> dataSources) {
+        public UnionDataSourceBuilder withDataSources(List<DataSource> dataSources) {
             this.dataSources = dataSources;
+            return this;
+        }
+
+        public UnionDataSourceBuilder addDataSource(DataSource dataSource) {
+            if (this.dataSources == null) {
+                this.dataSources = new ArrayList<>();
+            }
+
+            this.dataSources.add(dataSource);
             return this;
         }
 
