@@ -5,6 +5,7 @@ import com.github.levin81.daelic.druid.aggregator.Aggregator;
 import com.github.levin81.daelic.druid.context.QueryContext;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
+import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.dimension.Dimension;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
@@ -98,6 +99,17 @@ public class GroupBy {
             }
 
             this.dimensions.add(dimension);
+            return this;
+        }
+
+        public GroupByBuilder withLimit(Limit limitSpec) {
+            this.limitSpec = limitSpec;
+        public GroupByBuilder addDimension(String dimension) {
+            if (this.dimensions == null) {
+                this.dimensions = new ArrayList<>();
+            }
+
+            this.dimensions.add(DefaultDimension.builder().withDimension(dimension).build());
             return this;
         }
 

@@ -33,7 +33,7 @@ public class AndFilter implements Filter {
         return extractionFn;
     }
 
-    public static AndFilterBuilder build() {
+    public static AndFilterBuilder builder() {
         return new AndFilterBuilder();
     }
 
