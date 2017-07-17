@@ -1,12 +1,10 @@
 package com.github.levin81.daelic.druid.metric;
 
-import com.github.levin81.daelic.druid.SortingOrder;
-
 public class DimensionTopNMetric implements TopNMetric {
 
     private final String type = "dimension";
 
-    private String ordering = SortingOrder.LEXICOGRAPHIC;
+    private String ordering;
     private String previousStop;
 
     @Override
@@ -32,6 +30,7 @@ public class DimensionTopNMetric implements TopNMetric {
     }
 
     public static class DimensionTopNMetricBuilder {
+
         private String ordering;
         private String previousStop;
 

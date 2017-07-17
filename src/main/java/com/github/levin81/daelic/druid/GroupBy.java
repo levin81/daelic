@@ -102,8 +102,6 @@ public class GroupBy {
             return this;
         }
 
-        public GroupByBuilder withLimit(Limit limitSpec) {
-            this.limitSpec = limitSpec;
         public GroupByBuilder addDimension(String dimension) {
             if (this.dimensions == null) {
                 this.dimensions = new ArrayList<>();

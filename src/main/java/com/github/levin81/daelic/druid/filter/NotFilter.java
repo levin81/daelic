@@ -23,7 +23,7 @@ public class NotFilter implements Filter {
         return field;
     }
 
-    public static NotFilterBuilder build() {
+    public static NotFilterBuilder builder() {
         return new NotFilterBuilder();
     }
 

@@ -21,7 +21,7 @@ public class SimpleGranularity implements Granularity {
 
     private final String granularity;
 
-    private SimpleGranularity(String granularity) {
+    SimpleGranularity(String granularity) {
         this.granularity = granularity;
     }
 

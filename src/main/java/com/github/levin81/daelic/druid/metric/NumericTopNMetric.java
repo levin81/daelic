@@ -6,6 +6,10 @@ public class NumericTopNMetric implements TopNMetric {
 
     private String metric;
 
+    NumericTopNMetric(String metric) {
+        this.metric = metric;
+    }
+
     @Override
     public String getType() {
         return type;
@@ -15,15 +19,12 @@ public class NumericTopNMetric implements TopNMetric {
         return metric;
     }
 
-    NumericTopNMetric(String metric) {
-        this.metric = metric;
-    }
-
     public static NumericTopNMetricBuilder builder() {
         return new NumericTopNMetricBuilder();
     }
 
     public static class NumericTopNMetricBuilder {
+
         private String metric;
 
         NumericTopNMetricBuilder() {

@@ -37,7 +37,7 @@ public class ExtractionDimension implements Dimension {
         return extractionFn;
     }
 
-    public static ExtractionDimensionBuilder build() {
+    public static ExtractionDimensionBuilder builder() {
         return new ExtractionDimensionBuilder();
     }
 

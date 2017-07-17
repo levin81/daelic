@@ -6,6 +6,10 @@ public class InvertedTopNMetric implements TopNMetric {
 
     private String metric;
 
+    InvertedTopNMetric(String metric) {
+        this.metric = metric;
+    }
+
     @Override
     public String getType() {
         return type;
@@ -15,15 +19,12 @@ public class InvertedTopNMetric implements TopNMetric {
         return metric;
     }
 
-    InvertedTopNMetric(String metric) {
-        this.metric = metric;
-    }
-
     public static InvertedTopNMetricBuilder builder() {
         return new InvertedTopNMetricBuilder();
     }
 
     public static class InvertedTopNMetricBuilder {
+
         private String metric;
 
         InvertedTopNMetricBuilder() {

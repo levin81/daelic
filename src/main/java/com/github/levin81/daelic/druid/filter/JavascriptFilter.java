@@ -2,7 +2,7 @@ package com.github.levin81.daelic.druid.filter;
 
 import com.github.levin81.daelic.util.Properties;
 
-/***
+/**
  * The JavaScript filter matches a dimension against the specified JavaScript function predicate. The filter
  * matches values for which the function returns true.
  *

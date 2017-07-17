@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
 import com.github.levin81.daelic.druid.context.QueryContext;
 import com.github.levin81.daelic.druid.datasource.DataSource;
+import com.github.levin81.daelic.druid.datasource.QueryDataSource;
 import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
 import com.github.levin81.daelic.druid.dimension.Dimension;
@@ -48,6 +49,9 @@ public class TopN {
 
         Properties.assertValid(threshold, t -> t > 0,
                 "Threshold property must be greater than zero");
+
+        Properties.assertValid(dataSource, d -> !(d instanceof QueryDataSource),
+                "QueryDataSource only supported by GroupBy query");
 
         this.dataSource = dataSource;
         this.dimension = dimension;

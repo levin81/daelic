@@ -26,7 +26,7 @@ public class OrFilter implements Filter {
         return fields;
     }
 
-    public static OrFilterBuilder build() {
+    public static OrFilterBuilder builder() {
         return new OrFilterBuilder();
     }
 
