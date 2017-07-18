@@ -43,7 +43,7 @@ public class FieldAccessorPostAggregator implements PostAggregator {
             return this;
         }
 
-        public FieldAccessorPostAggregatorBuilder withFieldName(String name) {
+        public FieldAccessorPostAggregatorBuilder withFieldName(String fieldName) {
             this.fieldName = fieldName;
             return this;
         }
