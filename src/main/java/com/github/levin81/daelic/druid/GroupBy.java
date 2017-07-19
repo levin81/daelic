@@ -9,8 +9,8 @@ import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.dimension.Dimension;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
-import com.github.levin81.daelic.druid.having.Having;
-import com.github.levin81.daelic.druid.limit.Limit;
+import com.github.levin81.daelic.druid.havingspec.HavingSpec;
+import com.github.levin81.daelic.druid.limitspec.LimitSpec;
 import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
 import lombok.Getter;
@@ -25,17 +25,17 @@ public class GroupBy {
     private final String queryType = "groupBy";
     private DataSource dataSource;
     private List<Dimension> dimensions;
-    private Limit limitSpec;
+    private LimitSpec limitSpec;
     private Granularity granularity;
     private Filter filter;
     private List<Aggregator> aggregations;
     private List<PostAggregator> postAggregations;
-    private Having havingSpec;
+    private HavingSpec havingSpec;
     private List<Interval> intervals;
     private QueryContext context;
 
-    GroupBy(DataSource dataSource, List<Dimension> dimensions, Limit limitSpec, Granularity granularity, Filter filter,
-            List<Aggregator> aggregations, List<PostAggregator> postAggregations, Having havingSpec, List<Interval> intervals,
+    GroupBy(DataSource dataSource, List<Dimension> dimensions, LimitSpec limitSpec, Granularity granularity, Filter filter,
+            List<Aggregator> aggregations, List<PostAggregator> postAggregations, HavingSpec havingSpec, List<Interval> intervals,
             QueryContext context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimensions, "Dimensions is a required property");
@@ -65,12 +65,12 @@ public class GroupBy {
 
         private DataSource dataSource;
         private List<Dimension> dimensions;
-        private Limit limitSpec;
+        private LimitSpec limitSpec;
         private Granularity granularity;
         private Filter filter;
         private List<Aggregator> aggregations;
         private List<PostAggregator> postAggregations;
-        private Having havingSpec;
+        private HavingSpec havingSpec;
         private List<Interval> intervals;
         private QueryContext context;
 
@@ -111,7 +111,7 @@ public class GroupBy {
             return this;
         }
 
-        public GroupByBuilder withLimit(Limit limitSpec) {
+        public GroupByBuilder withLimitSpec(LimitSpec limitSpec) {
             this.limitSpec = limitSpec;
             return this;
         }
@@ -154,7 +154,7 @@ public class GroupBy {
             return this;
         }
 
-        public GroupByBuilder withHaving(Having havingSpec) {
+        public GroupByBuilder withHavingSpec(HavingSpec havingSpec) {
             this.havingSpec = havingSpec;
             return this;
         }

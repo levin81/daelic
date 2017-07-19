@@ -1,16 +1,16 @@
-package com.github.levin81.daelic.druid.limit;
+package com.github.levin81.daelic.druid.limitspec;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultLimit implements Limit {
+public class DefaultLimitSpec implements LimitSpec {
 
     private final String type = "default";
 
     private int limit;
     private List<OrderByColumn> columns;
 
-    DefaultLimit(int limit, List<OrderByColumn> columns) {
+    DefaultLimitSpec(int limit, List<OrderByColumn> columns) {
         this.limit = limit;
         this.columns = columns;
     }
@@ -28,30 +28,30 @@ public class DefaultLimit implements Limit {
         return columns;
     }
 
-    public static DefaultLimitBuilder builder() {
-        return new DefaultLimitBuilder();
+    public static DefaultLimitSpecBuilder builder() {
+        return new DefaultLimitSpecBuilder();
     }
 
-    public static class DefaultLimitBuilder {
+    public static class DefaultLimitSpecBuilder {
 
         private int limit;
         private List<OrderByColumn> columns;
 
-        DefaultLimitBuilder() {
+        DefaultLimitSpecBuilder() {
 
         }
 
-        public DefaultLimitBuilder withLimit(int limit) {
+        public DefaultLimitSpecBuilder withLimit(int limit) {
             this.limit = limit;
             return this;
         }
 
-        public DefaultLimitBuilder withColumns(List<OrderByColumn> columns) {
+        public DefaultLimitSpecBuilder withColumns(List<OrderByColumn> columns) {
             this.columns = columns;
             return this;
         }
 
-        public DefaultLimitBuilder addColumn(OrderByColumn column) {
+        public DefaultLimitSpecBuilder addColumn(OrderByColumn column) {
             if (this.columns == null) {
                 this.columns = new ArrayList<>();
             }
@@ -60,8 +60,8 @@ public class DefaultLimit implements Limit {
             return this;
         }
 
-        public DefaultLimit build() {
-            return new DefaultLimit(limit, columns);
+        public DefaultLimitSpec build() {
+            return new DefaultLimitSpec(limit, columns);
         }
     }
 }

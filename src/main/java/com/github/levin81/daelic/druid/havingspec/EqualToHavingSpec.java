@@ -1,13 +1,13 @@
-package com.github.levin81.daelic.druid.having;
+package com.github.levin81.daelic.druid.havingspec;
 
-public class EqualToHaving implements Having {
+public class EqualToHavingSpec implements HavingSpec {
 
     private final String type = "equalTo";
 
     private String aggregation;
     private Number value;
 
-    EqualToHaving(String aggregation, Number value) {
+    EqualToHavingSpec(String aggregation, Number value) {
         this.aggregation = aggregation;
         this.value = value;
     }
@@ -25,31 +25,31 @@ public class EqualToHaving implements Having {
         return value;
     }
 
-    public static EqualToHavingBuilder builder() {
-        return new EqualToHavingBuilder();
+    public static EqualToHavingSpecBuilder builder() {
+        return new EqualToHavingSpecBuilder();
     }
 
-    public static class EqualToHavingBuilder {
+    public static class EqualToHavingSpecBuilder {
 
         private String aggregation;
         private Number value;
 
-        EqualToHavingBuilder() {
+        EqualToHavingSpecBuilder() {
 
         }
 
-        public EqualToHavingBuilder withAggregation(String aggregation) {
+        public EqualToHavingSpecBuilder withAggregation(String aggregation) {
             this.aggregation = aggregation;
             return this;
         }
 
-        public EqualToHavingBuilder withValue(Number value) {
+        public EqualToHavingSpecBuilder withValue(Number value) {
             this.value = value;
             return this;
         }
 
-        public EqualToHaving build() {
-            return new EqualToHaving(aggregation, value);
+        public EqualToHavingSpec build() {
+            return new EqualToHavingSpec(aggregation, value);
         }
 
     }

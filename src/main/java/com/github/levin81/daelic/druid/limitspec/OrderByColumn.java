@@ -1,4 +1,4 @@
-package com.github.levin81.daelic.druid.limit;
+package com.github.levin81.daelic.druid.limitspec;
 
 public class OrderByColumn {
 

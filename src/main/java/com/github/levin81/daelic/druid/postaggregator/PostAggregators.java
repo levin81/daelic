@@ -18,8 +18,8 @@ public final class PostAggregators {
         return DoubleLeastPostAggregator.builder();
     }
 
-    public static FieldAccessorPostAggregator.FieldAccessorPostAggregatorBuilder FIELD_ACCESSOR() {
-        return FieldAccessorPostAggregator.builder();
+    public static FieldAccessPostAggregator.FieldAccessPostAggregatorBuilder FIELD_ACCESS() {
+        return FieldAccessPostAggregator.builder();
     }
 
     public static HyperUniqueCardinalityPostAggregator.HyperUniqueCardinalityPostAggregatorBuilder HYPER_UNIQUE_CARDINALITY() {

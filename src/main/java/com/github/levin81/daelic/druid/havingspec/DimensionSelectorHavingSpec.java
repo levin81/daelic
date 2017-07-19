@@ -1,8 +1,8 @@
-package com.github.levin81.daelic.druid.having;
+package com.github.levin81.daelic.druid.havingspec;
 
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 
-public class DimensionSelectorHaving implements Having {
+public class DimensionSelectorHavingSpec implements HavingSpec {
 
     private final String type = "dimSelector";
 
@@ -10,7 +10,7 @@ public class DimensionSelectorHaving implements Having {
     private String value;
     private ExtractionFn extractionFn;
 
-    DimensionSelectorHaving(String dimension, String value, ExtractionFn extractionFn) {
+    DimensionSelectorHavingSpec(String dimension, String value, ExtractionFn extractionFn) {
         this.dimension = dimension;
         this.value = value;
         this.extractionFn = extractionFn;
@@ -33,37 +33,37 @@ public class DimensionSelectorHaving implements Having {
         return extractionFn;
     }
 
-    public static DimensionSelectorHavingBuilder builder() {
-        return new DimensionSelectorHavingBuilder();
+    public static DimensionSelectorHavingSpecBuilder builder() {
+        return new DimensionSelectorHavingSpecBuilder();
     }
 
-    public static class DimensionSelectorHavingBuilder {
+    public static class DimensionSelectorHavingSpecBuilder {
 
         private String dimension;
         private String value;
         private ExtractionFn extractionFn;
 
-        DimensionSelectorHavingBuilder() {
+        DimensionSelectorHavingSpecBuilder() {
 
         }
 
-        public DimensionSelectorHavingBuilder withDimension(String dimension) {
+        public DimensionSelectorHavingSpecBuilder withDimension(String dimension) {
             this.dimension = dimension;
             return this;
         }
 
-        public DimensionSelectorHavingBuilder withValue(String value) {
+        public DimensionSelectorHavingSpecBuilder withValue(String value) {
             this.value = value;
             return this;
         }
 
-        public DimensionSelectorHavingBuilder withExtractionFn(ExtractionFn extractionFn) {
+        public DimensionSelectorHavingSpecBuilder withExtractionFn(ExtractionFn extractionFn) {
             this.extractionFn = extractionFn;
             return this;
         }
 
-        public DimensionSelectorHaving build() {
-            return new DimensionSelectorHaving(dimension, value, extractionFn);
+        public DimensionSelectorHavingSpec build() {
+            return new DimensionSelectorHavingSpec(dimension, value, extractionFn);
         }
     }
 }
