@@ -22,7 +22,7 @@ A library for easy query object building and query result parsing for Apache Dru
 - Assertions
 - Contexts
 - ~~ExtractionFns - Time Parsing, Time Format~~
-- Lookups - Namespace
+- ~~Lookups - Namespace~~
 - Filters - Bound, Interval, Search, Spatial
 - SortingOrder
 - Queries - Search, Select, Timeseries
