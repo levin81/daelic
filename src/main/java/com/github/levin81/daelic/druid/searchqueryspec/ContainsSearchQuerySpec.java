@@ -1,4 +1,4 @@
-package com.github.levin81.daelic.druid.filter.searchqueryspec;
+package com.github.levin81.daelic.druid.searchqueryspec;
 
 public class ContainsSearchQuerySpec implements SearchQuerySpec {
 
