@@ -6,16 +6,16 @@ public final class Filters {
         return AndFilter.builder();
     }
 
-    public static void BOUND() {
-
+    public static BoundFilter.BoundFilterBuilder BOUND() {
+        return BoundFilter.builder();
     }
 
     public static InFilter.InFilterBuilder IN() {
         return InFilter.builder();
     }
 
-    public static void INTERVAL() {
-
+    public static IntervalFilter.IntervalFilterBuilder INTERVAL() {
+        return IntervalFilter.builder();
     }
 
     public static JavascriptFilter.JavascriptFilterBuilder JAVASCRIPT() {
