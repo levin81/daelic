@@ -23,6 +23,7 @@ import java.util.List;
 public class GroupBy {
 
     private final String queryType = "groupBy";
+
     private DataSource dataSource;
     private List<Dimension> dimensions;
     private LimitSpec limitSpec;

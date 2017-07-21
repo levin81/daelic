@@ -6,16 +6,16 @@ public final class Queries {
         return GroupBy.builder();
     }
 
-    public static void SEARCH() {
-
+    public static Search.SearchBuilder SEARCH() {
+        return Search.builder();
     }
 
     public static void SELECT() {
 
     }
 
-    public static void TIMESERIES() {
-
+    public static Timeseries.TimeseriesBuilder TIMESERIES() {
+        return Timeseries.builder();
     }
 
     public static TopN.TopNBuilder TOPN() {

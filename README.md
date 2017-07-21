@@ -34,6 +34,6 @@ A library for easy query object building and query result parsing for Apache Dru
 - ~~Lookups - Namespace~~
 - Filters - ~~Bound, Interval, Search,~~ Spatial
 - SortingOrder
-- Queries - Search, Select, Timeseries
+- Queries - ~~Search,~~ Select, ~~Timeseries~~
 - Query Result deserialization
 - Bug Fixes
