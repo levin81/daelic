@@ -1,7 +1,7 @@
 package com.github.levin81.daelic.druid;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.github.levin81.daelic.druid.context.QueryContext;
+import com.github.levin81.daelic.druid.context.Context;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
 import com.github.levin81.daelic.druid.dimension.DefaultDimension;
@@ -30,10 +30,10 @@ public class Search {
     private List<Interval> intervals;
     private SearchQuerySpec query;
     private String sort;
-    private QueryContext context;
+    private Context context;
 
     Search(DataSource dataSource, List<Dimension> searchDimensions, int limit, Granularity granularity, Filter filter,
-           List<Interval> intervals, SearchQuerySpec query, String sort, QueryContext context) {
+           List<Interval> intervals, SearchQuerySpec query, String sort, Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(searchDimensions, "SearchDimensions is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
@@ -64,7 +64,7 @@ public class Search {
         private List<Interval> intervals;
         private SearchQuerySpec query;
         private String sort;
-        private QueryContext context;
+        private Context context;
 
         SearchBuilder() {
 
@@ -142,7 +142,7 @@ public class Search {
             return this;
         }
 
-        public SearchBuilder withContext(QueryContext context) {
+        public SearchBuilder withContext(Context context) {
             this.context = context;
             return this;
         }

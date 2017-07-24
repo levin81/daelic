@@ -2,11 +2,11 @@ package com.github.levin81.daelic.druid;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
-import com.github.levin81.daelic.druid.context.QueryContext;
+import com.github.levin81.daelic.druid.context.Context;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.datasource.QueryDataSource;
-import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
+import com.github.levin81.daelic.druid.dimension.DefaultDimension;
 import com.github.levin81.daelic.druid.dimension.Dimension;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
@@ -17,7 +17,6 @@ import com.github.levin81.daelic.util.Properties;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -34,10 +33,10 @@ public class TopN {
     private List<Aggregator> aggregations;
     private List<PostAggregator> postAggregations;
     private List<Interval> intervals;
-    private QueryContext context;
+    private Context context;
 
     TopN(DataSource dataSource, Dimension dimension, int threshold, TopNMetric metric, Granularity granularity, Filter filter,
-         List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals, QueryContext context) {
+         List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals, Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimension, "Dimension is a required property");
         Properties.assertRequired(metric, "Metric is a required property");
@@ -80,7 +79,7 @@ public class TopN {
         private List<Aggregator> aggregations;
         private List<PostAggregator> postAggregations;
         private List<Interval> intervals;
-        private QueryContext context;
+        private Context context;
 
         TopNBuilder() {
 
@@ -173,7 +172,7 @@ public class TopN {
             return this;
         }
 
-        public TopNBuilder withContext(QueryContext context) {
+        public TopNBuilder withContext(Context context) {
             this.context = context;
             return this;
         }

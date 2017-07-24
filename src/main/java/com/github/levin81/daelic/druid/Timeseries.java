@@ -2,7 +2,7 @@ package com.github.levin81.daelic.druid;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
-import com.github.levin81.daelic.druid.context.QueryContext;
+import com.github.levin81.daelic.druid.context.Context;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
 import com.github.levin81.daelic.druid.filter.Filter;
@@ -26,11 +26,11 @@ public class Timeseries {
     private List<Aggregator> aggregations;
     private List<PostAggregator> postAggregations;
     private List<Interval> intervals;
-    private QueryContext context;
+    private Context context;
     private boolean descending;
 
     Timeseries(DataSource dataSource, Granularity granularity, Filter filter, List<Aggregator> aggregations,
-               List<PostAggregator> postAggregations, List<Interval> intervals, QueryContext context, boolean descending) {
+               List<PostAggregator> postAggregations, List<Interval> intervals, Context context, boolean descending) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
         Properties.assertRequired(intervals, "Intervals is a required property");
@@ -60,7 +60,7 @@ public class Timeseries {
         private List<Aggregator> aggregations;
         private List<PostAggregator> postAggregations;
         private List<Interval> intervals;
-        private QueryContext context;
+        private Context context;
         private boolean descending;
 
         TimeseriesBuilder() {
@@ -129,7 +129,7 @@ public class Timeseries {
             return this;
         }
 
-        public TimeseriesBuilder withContext(QueryContext context) {
+        public TimeseriesBuilder withContext(Context context) {
             this.context = context;
             return this;
         }

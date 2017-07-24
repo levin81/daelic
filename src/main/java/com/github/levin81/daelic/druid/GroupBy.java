@@ -2,7 +2,7 @@ package com.github.levin81.daelic.druid;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
-import com.github.levin81.daelic.druid.context.QueryContext;
+import com.github.levin81.daelic.druid.context.Context;
 import com.github.levin81.daelic.druid.datasource.DataSource;
 import com.github.levin81.daelic.druid.datasource.TableDataSource;
 import com.github.levin81.daelic.druid.dimension.DefaultDimension;
@@ -33,11 +33,11 @@ public class GroupBy {
     private List<PostAggregator> postAggregations;
     private HavingSpec havingSpec;
     private List<Interval> intervals;
-    private QueryContext context;
+    private Context context;
 
     GroupBy(DataSource dataSource, List<Dimension> dimensions, LimitSpec limitSpec, Granularity granularity, Filter filter,
             List<Aggregator> aggregations, List<PostAggregator> postAggregations, HavingSpec havingSpec, List<Interval> intervals,
-            QueryContext context) {
+            Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimensions, "Dimensions is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
@@ -73,7 +73,7 @@ public class GroupBy {
         private List<PostAggregator> postAggregations;
         private HavingSpec havingSpec;
         private List<Interval> intervals;
-        private QueryContext context;
+        private Context context;
 
         GroupByBuilder() {
 
@@ -174,7 +174,7 @@ public class GroupBy {
             return this;
         }
 
-        public GroupByBuilder withContext(QueryContext context) {
+        public GroupByBuilder withContext(Context context) {
             this.context = context;
             return this;
         }
