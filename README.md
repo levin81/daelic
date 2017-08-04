@@ -36,4 +36,5 @@ A library for easy query object building and query result parsing for Apache Dru
 - SortingOrder
 - Queries - ~~Search,~~ Select, ~~Timeseries~~
 - Query Result deserialization
+- Tests
 - Bug Fixes
