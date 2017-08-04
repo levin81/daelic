@@ -8,7 +8,7 @@ import java.util.List;
 @JsonDeserialize(using = GroupByResultDeserializer.class)
 public class GroupByResult {
 
-    private List<GroupByRowResult> rows;
+    private final List<GroupByRowResult> rows;
 
     public GroupByResult(List<GroupByRowResult> rows) {
         this.rows = rows;

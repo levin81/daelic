@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class GroupByRowResult {
 
-    private String version;
-    private ZonedDateTime timestamp;
-    private Map<String, Object> data;
+    private final String version;
+    private final ZonedDateTime timestamp;
+    private final Map<String, Object> data;
 
     @JsonCreator
     public GroupByRowResult(@JsonProperty("version") String version,
