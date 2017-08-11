@@ -10,13 +10,10 @@ import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
 import com.github.levin81.daelic.druid.searchqueryspec.SearchQuerySpec;
 import com.github.levin81.daelic.util.Properties;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Search {
 
@@ -48,6 +45,46 @@ public class Search {
         this.query = query;
         this.sort = sort;
         this.context = context;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public List<Dimension> getSearchDimensions() {
+        return searchDimensions;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public Granularity getGranularity() {
+        return granularity;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public List<Interval> getIntervals() {
+        return intervals;
+    }
+
+    public SearchQuerySpec getQuery() {
+        return query;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public static SearchBuilder builder() {

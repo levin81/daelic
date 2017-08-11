@@ -13,12 +13,10 @@ import com.github.levin81.daelic.druid.havingspec.HavingSpec;
 import com.github.levin81.daelic.druid.limitspec.LimitSpec;
 import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupBy {
 
@@ -56,6 +54,50 @@ public class GroupBy {
         this.intervals = intervals;
         this.havingSpec = havingSpec;
         this.context = context;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public List<Dimension> getDimensions() {
+        return dimensions;
+    }
+
+    public LimitSpec getLimitSpec() {
+        return limitSpec;
+    }
+
+    public Granularity getGranularity() {
+        return granularity;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public List<Aggregator> getAggregations() {
+        return aggregations;
+    }
+
+    public List<PostAggregator> getPostAggregations() {
+        return postAggregations;
+    }
+
+    public HavingSpec getHavingSpec() {
+        return havingSpec;
+    }
+
+    public List<Interval> getIntervals() {
+        return intervals;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public static GroupByBuilder builder() {

@@ -9,12 +9,10 @@ import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
 import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Timeseries {
 
@@ -46,6 +44,42 @@ public class Timeseries {
         this.intervals = intervals;
         this.context = context;
         this.descending = descending;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public Granularity getGranularity() {
+        return granularity;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public List<Aggregator> getAggregations() {
+        return aggregations;
+    }
+
+    public List<PostAggregator> getPostAggregations() {
+        return postAggregations;
+    }
+
+    public List<Interval> getIntervals() {
+        return intervals;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public boolean isDescending() {
+        return descending;
     }
 
     public static TimeseriesBuilder builder() {

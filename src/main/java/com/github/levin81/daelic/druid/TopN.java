@@ -14,12 +14,10 @@ import com.github.levin81.daelic.druid.metric.NumericTopNMetric;
 import com.github.levin81.daelic.druid.metric.TopNMetric;
 import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TopN {
 
@@ -62,6 +60,50 @@ public class TopN {
         this.postAggregations = postAggregations;
         this.intervals = intervals;
         this.context = context;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public int getThreshold() {
+        return threshold;
+    }
+
+    public TopNMetric getMetric() {
+        return metric;
+    }
+
+    public Granularity getGranularity() {
+        return granularity;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    public List<Aggregator> getAggregations() {
+        return aggregations;
+    }
+
+    public List<PostAggregator> getPostAggregations() {
+        return postAggregations;
+    }
+
+    public List<Interval> getIntervals() {
+        return intervals;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public static TopNBuilder builder() {
