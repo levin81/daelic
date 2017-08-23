@@ -46,7 +46,7 @@ public class HyperUniqueCardinalityPostAggregator implements PostAggregator {
             return this;
         }
 
-        public HyperUniqueCardinalityPostAggregatorBuilder withFieldName(String name) {
+        public HyperUniqueCardinalityPostAggregatorBuilder withFieldName(String fieldName) {
             this.fieldName = fieldName;
             return this;
         }
