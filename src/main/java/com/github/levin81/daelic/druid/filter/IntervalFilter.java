@@ -1,11 +1,13 @@
 package com.github.levin81.daelic.druid.filter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.Interval;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class IntervalFilter implements Filter {
 
     private final String type = "interval";

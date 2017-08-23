@@ -38,8 +38,8 @@ public final class Filters {
         return RegexFilter.builder();
     }
 
-    public static void SEARCH() {
-
+    public static SearchFilter.SearchFilterBuilder SEARCH() {
+        return SearchFilter.builder();
     }
 
     public static SelectorFilter.SelectorFilterBuilder SELECTOR() {

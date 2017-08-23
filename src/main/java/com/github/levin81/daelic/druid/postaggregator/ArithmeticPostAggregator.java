@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.postaggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.aggregator.Aggregator;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
  * If no ordering (or null) is specified, the default floating point ordering is used.
  * numericFirst ordering always returns finite values first, followed by NaN, and infinite values last.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArithmeticPostAggregator implements PostAggregator {
 
     public final static String ADDITION_FN = "+";

@@ -1,8 +1,10 @@
 package com.github.levin81.daelic.druid.datasource;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.GroupBy;
 import com.github.levin81.daelic.util.Properties;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryDataSource implements DataSource {
 
     private final String type = "query";

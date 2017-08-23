@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.filter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 import com.github.levin81.daelic.util.Properties;
 
@@ -7,6 +8,7 @@ import com.github.levin81.daelic.util.Properties;
  * Like filters can be used for basic wildcard searches. They are equivalent to the SQL LIKE operator. Special
  * characters supported are "%" (matches any number of characters) and "_" (matches any one character).
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LikeFilter implements Filter {
 
     private final String type = "like";

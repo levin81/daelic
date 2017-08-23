@@ -1,5 +1,8 @@
 package com.github.levin81.daelic.druid.havingspec;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class NotHavingSpec implements HavingSpec {
 
     private final String type = "not";

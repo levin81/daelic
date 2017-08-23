@@ -2,6 +2,8 @@ package com.github.levin81.daelic.druid.result;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
@@ -25,6 +27,7 @@ public class GroupByRowResult {
         return version;
     }
 
+    @JsonSerialize(using = ToStringSerializer.class)
     public ZonedDateTime getTimestamp() {
         return timestamp;
     }

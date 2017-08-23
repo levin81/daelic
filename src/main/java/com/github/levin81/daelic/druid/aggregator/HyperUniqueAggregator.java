@@ -1,11 +1,13 @@
 package com.github.levin81.daelic.druid.aggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /**
  * Uses HyperLogLog to compute the estimated cardinality of a dimension that has been aggregated as a "hyperUnique"
  * metric at indexing time.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class HyperUniqueAggregator implements Aggregator {
 
     private final String type = "hyperUnique";

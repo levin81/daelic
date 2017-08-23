@@ -1,11 +1,13 @@
 package com.github.levin81.daelic.druid.filter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /***
  * The regular expression filter is similar to the selector filter, but using regular expressions. It matches
  * the specified dimension with the given pattern. The pattern can be any standard Java regular expression.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RegexFilter implements Filter {
 
     private final String type = "regex";

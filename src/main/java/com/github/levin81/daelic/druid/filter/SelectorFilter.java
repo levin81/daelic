@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.filter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
 import com.github.levin81.daelic.util.Properties;
 
@@ -9,6 +10,7 @@ import com.github.levin81.daelic.util.Properties;
  *
  * This is the equivalent of WHERE &lt;dimension_string&gt; = '&lt;dimension_value_string&gt;'.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SelectorFilter implements Filter {
 
     private final String type = "selector";

@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.aggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * rollup. In general, we strongly recommend using the hyperUnique aggregator instead of the cardinality aggregator
  * if you do not care about the individual values of a dimension.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CardinalityAggregator implements Aggregator {
 
     private final String type = "cardinality";

@@ -1,8 +1,11 @@
 package com.github.levin81.daelic.druid.postaggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class JavascriptPostAggregator implements PostAggregator {
 
     private final String type = "javascript";

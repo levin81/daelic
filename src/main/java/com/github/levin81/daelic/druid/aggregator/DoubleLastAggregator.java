@@ -1,7 +1,9 @@
 package com.github.levin81.daelic.druid.aggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DoubleLastAggregator implements Aggregator {
 
     private final String type = "doubleLast";

@@ -65,7 +65,7 @@ public class LookupExtractionFn implements ExtractionFn {
         private boolean retainMissingValue = false;
         private boolean injective = false;
         private String replaceMissingValueWith;
-        private boolean optimize = false;
+        private boolean optimize = true;
 
         LookupExtractionFnBuilder() {
 

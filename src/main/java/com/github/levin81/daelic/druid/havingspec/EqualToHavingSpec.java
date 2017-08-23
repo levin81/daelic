@@ -1,5 +1,8 @@
 package com.github.levin81.daelic.druid.havingspec;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EqualToHavingSpec implements HavingSpec {
 
     private final String type = "equalTo";

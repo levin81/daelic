@@ -1,8 +1,11 @@
 package com.github.levin81.daelic.druid.limitspec;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DefaultLimitSpec implements LimitSpec {
 
     private final String type = "default";

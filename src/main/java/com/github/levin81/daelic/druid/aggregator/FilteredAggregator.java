@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.aggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.util.Properties;
 
@@ -13,6 +14,7 @@ import com.github.levin81.daelic.util.Properties;
  * Note: If only the filtered results are required, consider putting the filter on the query itself, which will be
  * much faster since it does not require scanning all the data.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FilteredAggregator implements Aggregator {
 
     private final String type = "filtered";

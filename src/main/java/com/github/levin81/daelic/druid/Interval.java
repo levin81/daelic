@@ -1,10 +1,12 @@
 package com.github.levin81.daelic.druid;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Interval {
 
     private OffsetDateTime start;

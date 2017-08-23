@@ -1,10 +1,12 @@
 package com.github.levin81.daelic.druid.datasource;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /***
  * The table data source is the most common type
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TableDataSource implements DataSource {
 
     private final String type = "table";

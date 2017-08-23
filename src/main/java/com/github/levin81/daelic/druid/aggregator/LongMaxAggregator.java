@@ -1,10 +1,12 @@
 package com.github.levin81.daelic.druid.aggregator;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /**
  * Computes the maximum of all metric values and Long.MIN_VALUE
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LongMaxAggregator implements Aggregator {
 
     private final String type = "longMax";
