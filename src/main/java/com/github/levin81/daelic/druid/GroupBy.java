@@ -29,12 +29,12 @@ public class GroupBy {
     private Filter filter;
     private List<Aggregator> aggregations;
     private List<PostAggregator> postAggregations;
-    private HavingSpec havingSpec;
+    private HavingSpec having;
     private List<Interval> intervals;
     private Context context;
 
     GroupBy(DataSource dataSource, List<Dimension> dimensions, LimitSpec limitSpec, Granularity granularity, Filter filter,
-            List<Aggregator> aggregations, List<PostAggregator> postAggregations, HavingSpec havingSpec, List<Interval> intervals,
+            List<Aggregator> aggregations, List<PostAggregator> postAggregations, HavingSpec having, List<Interval> intervals,
             Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimensions, "Dimensions is a required property");
@@ -52,7 +52,7 @@ public class GroupBy {
         this.aggregations = aggregations;
         this.postAggregations = postAggregations;
         this.intervals = intervals;
-        this.havingSpec = havingSpec;
+        this.having = having;
         this.context = context;
     }
 
@@ -88,8 +88,8 @@ public class GroupBy {
         return postAggregations;
     }
 
-    public HavingSpec getHavingSpec() {
-        return havingSpec;
+    public HavingSpec getHaving() {
+        return having;
     }
 
     public List<Interval> getIntervals() {
@@ -113,7 +113,7 @@ public class GroupBy {
         private Filter filter;
         private List<Aggregator> aggregations;
         private List<PostAggregator> postAggregations;
-        private HavingSpec havingSpec;
+        private HavingSpec having;
         private List<Interval> intervals;
         private Context context;
 
@@ -197,8 +197,8 @@ public class GroupBy {
             return this;
         }
 
-        public GroupByBuilder withHavingSpec(HavingSpec havingSpec) {
-            this.havingSpec = havingSpec;
+        public GroupByBuilder withHavingSpec(HavingSpec having) {
+            this.having = having;
             return this;
         }
 
@@ -223,7 +223,7 @@ public class GroupBy {
 
         public GroupBy build() {
             return new GroupBy(dataSource, dimensions, limitSpec, granularity, filter, aggregations,
-                    postAggregations, havingSpec, intervals, context);
+                    postAggregations, having, intervals, context);
         }
     }
 }
