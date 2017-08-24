@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.dimension.extractionfn;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /***
@@ -16,6 +17,7 @@ import com.github.levin81.daelic.util.Properties;
  * For example, if expr is "(a\w+)" in the example JSON above, a regex that matches words starting with the letter a, the extraction
  * function will convert a dimension value like banana to foobar.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RegexExtractionFn implements ExtractionFn {
 
     private final String type = "regex";

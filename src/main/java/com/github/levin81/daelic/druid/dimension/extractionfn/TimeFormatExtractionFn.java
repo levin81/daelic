@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.dimension.extractionfn;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.github.levin81.daelic.druid.granularity.Granularity;
@@ -7,6 +8,7 @@ import com.github.levin81.daelic.druid.granularity.Granularity;
 import java.time.ZoneId;
 import java.util.Locale;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TimeFormatExtractionFn implements ExtractionFn {
 
     private final String type = "timeFormat";

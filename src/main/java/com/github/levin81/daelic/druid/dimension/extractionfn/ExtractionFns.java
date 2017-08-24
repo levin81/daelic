@@ -2,6 +2,10 @@ package com.github.levin81.daelic.druid.dimension.extractionfn;
 
 public final class ExtractionFns {
 
+    public static CascadeExtractionFn.CascadeExtractionFnBuilder CASCADE() {
+        return CascadeExtractionFn.builder();
+    }
+
     public static JavascriptExtractionFn.JavascriptExtractionFnBuilder JAVASCRIPT() {
         return JavascriptExtractionFn.builder();
     }
@@ -26,11 +30,11 @@ public final class ExtractionFns {
         return SubstringExtractionFn.builder();
     }
 
-    public static void TIME_FORMAT() {
-
+    public static TimeFormatExtractionFn.TimeFormatExtractionFnBuilder TIME_FORMAT() {
+        return TimeFormatExtractionFn.builder();
     }
 
-    public static void TIME_PARSING() {
-
+    public static TimeParsingExtractionFn.TimeParsingExtractionFnBuilder TIME_PARSING() {
+        return TimeParsingExtractionFn.builder();
     }
 }

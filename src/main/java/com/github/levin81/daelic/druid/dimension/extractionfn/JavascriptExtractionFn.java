@@ -1,5 +1,6 @@
 package com.github.levin81.daelic.druid.dimension.extractionfn;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.util.Properties;
 
 /***
@@ -13,6 +14,7 @@ import com.github.levin81.daelic.util.Properties;
  * A property of injective specifies if the javascript function preserves uniqueness. The default value is false
  * meaning uniqueness is not preserved
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class JavascriptExtractionFn implements ExtractionFn {
 
     private final String type = "javascript";
