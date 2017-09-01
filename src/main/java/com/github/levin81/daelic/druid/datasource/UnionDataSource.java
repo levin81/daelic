@@ -43,7 +43,7 @@ public class UnionDataSource implements DataSource {
         }
 
         public UnionDataSourceBuilder withDataSources(List<DataSource> dataSources) {
-            this.dataSources = dataSources;
+            this.dataSources = new ArrayList<>(dataSources);
             return this;
         }
 

@@ -41,7 +41,7 @@ public class OrFilter implements Filter {
         }
 
         public OrFilterBuilder withFields(List<Filter> fields) {
-            this.fields = fields;
+            this.fields = new ArrayList<>(fields);
             return this;
         }
 

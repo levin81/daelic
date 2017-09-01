@@ -118,11 +118,11 @@ public class Search {
         }
 
         public SearchBuilder withSearchDimensions(List<Dimension> searchDimensions) {
-            this.searchDimensions = searchDimensions;
+            this.searchDimensions = new ArrayList<>(searchDimensions);
             return this;
         }
 
-        public SearchBuilder addSearchDimenson(Dimension searchDimension) {
+        public SearchBuilder addSearchDimension(Dimension searchDimension) {
             if (this.searchDimensions == null) {
                 this.searchDimensions = new ArrayList<>();
             }
@@ -131,7 +131,7 @@ public class Search {
             return this;
         }
 
-        public SearchBuilder addSearchDimenson(String searchDimension) {
+        public SearchBuilder addSearchDimension(String searchDimension) {
             if (this.searchDimensions == null) {
                 this.searchDimensions = new ArrayList<>();
             }
@@ -156,7 +156,7 @@ public class Search {
         }
 
         public SearchBuilder withIntervals(List<Interval> intervals) {
-            this.intervals = intervals;
+            this.intervals = new ArrayList<>(intervals);
             return this;
         }
 

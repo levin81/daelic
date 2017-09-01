@@ -122,7 +122,7 @@ public class Timeseries {
         }
 
         public TimeseriesBuilder withAggregations(List<Aggregator> aggregations) {
-            this.aggregations = aggregations;
+            this.aggregations = new ArrayList<>(aggregations);
             return this;
         }
 
@@ -136,7 +136,7 @@ public class Timeseries {
         }
 
         public TimeseriesBuilder withPostAggregations(List<PostAggregator> postAggregations) {
-            this.postAggregations = postAggregations;
+            this.postAggregations = new ArrayList<>(postAggregations);
             return this;
         }
 
@@ -150,7 +150,7 @@ public class Timeseries {
         }
 
         public TimeseriesBuilder withIntervals(List<Interval> intervals) {
-            this.intervals = intervals;
+            this.intervals = new ArrayList<>(intervals);
             return this;
         }
 

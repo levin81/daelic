@@ -132,7 +132,7 @@ public class GroupBy {
         }
 
         public GroupByBuilder withDimensions(List<Dimension> dimensions) {
-            this.dimensions = dimensions;
+            this.dimensions = new ArrayList<>(dimensions);
             return this;
         }
 
@@ -170,7 +170,7 @@ public class GroupBy {
         }
 
         public GroupByBuilder withAggregations(List<Aggregator> aggregations) {
-            this.aggregations = aggregations;
+            this.aggregations = new ArrayList<>(aggregations);
             return this;
         }
 
@@ -184,7 +184,7 @@ public class GroupBy {
         }
 
         public GroupByBuilder withPostAggregations(List<PostAggregator> postAggregations) {
-            this.postAggregations = postAggregations;
+            this.postAggregations = new ArrayList<>(postAggregations);
             return this;
         }
 
@@ -203,7 +203,7 @@ public class GroupBy {
         }
 
         public GroupByBuilder withIntervals(List<Interval> intervals) {
-            this.intervals = intervals;
+            this.intervals = new ArrayList<>(intervals);
             return this;
         }
 

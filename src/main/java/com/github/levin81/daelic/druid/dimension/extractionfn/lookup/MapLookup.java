@@ -2,6 +2,7 @@ package com.github.levin81.daelic.druid.dimension.extractionfn.lookup;
 
 import com.github.levin81.daelic.util.Properties;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MapLookup implements Lookup {
@@ -37,7 +38,7 @@ public class MapLookup implements Lookup {
         }
 
         public MapLookupBuilder withMap(Map<String, String> map) {
-            this.map = map;
+            this.map = new HashMap<>(map);
             return this;
         }
 

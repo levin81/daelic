@@ -50,7 +50,7 @@ public class DefaultLimitSpec implements LimitSpec {
         }
 
         public DefaultLimitSpecBuilder withColumns(List<OrderByColumn> columns) {
-            this.columns = columns;
+            this.columns = new ArrayList<>(columns);
             return this;
         }
 

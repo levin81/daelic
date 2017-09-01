@@ -38,7 +38,7 @@ public class AndHavingSpec implements HavingSpec {
         }
 
         public AndHavingSpecBuilder withHavingSpecs(List<HavingSpec> havingSpecs) {
-            this.havingSpecs = havingSpecs;
+            this.havingSpecs = new ArrayList<>(havingSpecs);
             return this;
         }
 

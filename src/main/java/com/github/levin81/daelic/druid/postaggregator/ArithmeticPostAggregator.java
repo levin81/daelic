@@ -91,7 +91,7 @@ public class ArithmeticPostAggregator implements PostAggregator {
         }
 
         public ArithmeticPostAggregatorBuilder withFields(List<Aggregator> fields) {
-            this.fields = fields;
+            this.fields = new ArrayList<>(fields);
             return this;
         }
 

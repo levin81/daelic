@@ -38,7 +38,7 @@ public class OrHavingSpec implements HavingSpec {
         }
 
         public OrHavingSpecBuilder withHavingSpecs(List<HavingSpec> havingSpecs) {
-            this.havingSpecs = havingSpecs;
+            this.havingSpecs = new ArrayList<>(havingSpecs);
             return this;
         }
 

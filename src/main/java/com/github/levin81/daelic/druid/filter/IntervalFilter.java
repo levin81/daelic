@@ -59,7 +59,7 @@ public class IntervalFilter implements Filter {
         }
 
         public IntervalFilterBuilder withIntervals(List<Interval> intervals) {
-            this.intervals = intervals;
+            this.intervals = new ArrayList<>(intervals);
             return this;
         }
 

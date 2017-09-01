@@ -49,7 +49,7 @@ public class AndFilter implements Filter {
         }
 
         public AndFilterBuilder withFields(List<Filter> fields) {
-            this.fields = fields;
+            this.fields = new ArrayList<>(fields);
             return this;
         }
 

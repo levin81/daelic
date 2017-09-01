@@ -173,7 +173,7 @@ public class TopN {
         }
 
         public TopNBuilder withAggregations(List<Aggregator> aggregations) {
-            this.aggregations = aggregations;
+            this.aggregations = new ArrayList<>(aggregations);
             return this;
         }
 
@@ -187,7 +187,7 @@ public class TopN {
         }
 
         public TopNBuilder withPostAggregations(List<PostAggregator> postAggregations) {
-            this.postAggregations = postAggregations;
+            this.postAggregations = new ArrayList<>(postAggregations);
             return this;
         }
 
@@ -201,7 +201,7 @@ public class TopN {
         }
 
         public TopNBuilder withIntervals(List<Interval> intervals) {
-            this.intervals = intervals;
+            this.intervals = new ArrayList<>(intervals);
             return this;
         }
 

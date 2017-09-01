@@ -45,7 +45,7 @@ public class FragmentSearchQuerySpec implements SearchQuerySpec {
         }
 
         public FragmentSearchQuerySpecBuilder withValues(List<String> values) {
-            this.values = values;
+            this.values = new ArrayList<>(values);
             return this;
         }
 

@@ -50,7 +50,7 @@ public class CascadeExtractionFn implements ExtractionFn {
         }
 
         public CascadeExtractionFnBuilder withExtractionFns(List<ExtractionFn> extractionFns) {
-            this.extractionFns = extractionFns;
+            this.extractionFns = new ArrayList<>(extractionFns);
             return this;
         }
 

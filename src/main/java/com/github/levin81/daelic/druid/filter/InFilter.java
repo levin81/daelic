@@ -62,7 +62,7 @@ public class InFilter implements Filter {
         }
 
         public InFilterBuilder withValues(List<String> values) {
-            this.values = values;
+            this.values = new ArrayList<>(values);
             return this;
         }
 

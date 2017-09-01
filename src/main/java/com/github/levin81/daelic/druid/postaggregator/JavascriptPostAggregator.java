@@ -57,7 +57,7 @@ public class JavascriptPostAggregator implements PostAggregator {
         }
 
         public JavascriptPostAggregatorBuilder withFieldNames(List<String> fieldNames) {
-            this.fieldNames = fieldNames;
+            this.fieldNames = new ArrayList<>(fieldNames);
             return this;
         }
 
