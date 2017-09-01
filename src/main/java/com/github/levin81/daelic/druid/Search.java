@@ -9,6 +9,8 @@ import com.github.levin81.daelic.druid.dimension.Dimension;
 import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
 import com.github.levin81.daelic.druid.searchqueryspec.SearchQuerySpec;
+import com.github.levin81.daelic.druid.sorting.SearchSortSpec;
+import com.github.levin81.daelic.druid.sorting.SortingOrder;
 import com.github.levin81.daelic.util.Properties;
 
 import java.util.ArrayList;
@@ -26,11 +28,11 @@ public class Search {
     private Filter filter;
     private List<Interval> intervals;
     private SearchQuerySpec query;
-    private String sort;
+    private SearchSortSpec sort;
     private Context context;
 
     Search(DataSource dataSource, List<Dimension> searchDimensions, int limit, Granularity granularity, Filter filter,
-           List<Interval> intervals, SearchQuerySpec query, String sort, Context context) {
+           List<Interval> intervals, SearchQuerySpec query, SearchSortSpec sort, Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(searchDimensions, "SearchDimensions is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
@@ -79,7 +81,7 @@ public class Search {
         return query;
     }
 
-    public String getSort() {
+    public SearchSortSpec getSort() {
         return sort;
     }
 
@@ -100,7 +102,7 @@ public class Search {
         private Filter filter;
         private List<Interval> intervals;
         private SearchQuerySpec query;
-        private String sort;
+        private SearchSortSpec sort;
         private Context context;
 
         SearchBuilder() {
@@ -174,8 +176,13 @@ public class Search {
             return this;
         }
 
-        public SearchBuilder withSort(String sort) {
+        public SearchBuilder withSort(SearchSortSpec sort) {
             this.sort = sort;
+            return this;
+        }
+
+        public SearchBuilder withSort(SortingOrder sortingOrder) {
+            this.sort = new SearchSortSpec(sortingOrder);
             return this;
         }
 

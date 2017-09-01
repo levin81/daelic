@@ -2,6 +2,7 @@ package com.github.levin81.daelic.druid.filter;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.levin81.daelic.druid.dimension.extractionfn.ExtractionFn;
+import com.github.levin81.daelic.druid.sorting.SortingOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BoundFilter implements Filter {
@@ -13,11 +14,11 @@ public class BoundFilter implements Filter {
     private String upper;
     private boolean lowerStrict;
     private boolean upperStrict;
-    private String ordering;
+    private SortingOrder ordering;
     private ExtractionFn extractionFn;
 
     BoundFilter(String dimension, String lower, String upper, boolean lowerStrict, boolean upperStrict,
-                String ordering, ExtractionFn extractionFn) {
+                SortingOrder ordering, ExtractionFn extractionFn) {
 
         this.dimension = dimension;
         this.lower = lower;
@@ -53,7 +54,7 @@ public class BoundFilter implements Filter {
         return upperStrict;
     }
 
-    public String getOrdering() {
+    public SortingOrder getOrdering() {
         return ordering;
     }
 
@@ -72,7 +73,7 @@ public class BoundFilter implements Filter {
         private String upper;
         private boolean lowerStrict;
         private boolean upperStrict;
-        private String ordering;
+        private SortingOrder ordering;
         private ExtractionFn extractionFn;
 
         BoundFilterBuilder() {
@@ -114,7 +115,7 @@ public class BoundFilter implements Filter {
             return this;
         }
 
-        public BoundFilterBuilder withOrdering(String ordering) {
+        public BoundFilterBuilder withOrdering(SortingOrder ordering) {
             this.ordering = ordering;
             return this;
         }

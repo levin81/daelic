@@ -1,13 +1,14 @@
 package com.github.levin81.daelic.druid.metric;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.github.levin81.daelic.druid.sorting.SortingOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DimensionTopNMetric implements TopNMetric {
 
     private final String type = "dimension";
 
-    private String ordering;
+    private SortingOrder ordering;
     private String previousStop;
 
     @Override
@@ -15,7 +16,7 @@ public class DimensionTopNMetric implements TopNMetric {
         return type;
     }
 
-    public String getOrdering() {
+    public SortingOrder getOrdering() {
         return ordering;
     }
 
@@ -23,7 +24,7 @@ public class DimensionTopNMetric implements TopNMetric {
         return previousStop;
     }
 
-    DimensionTopNMetric(String ordering, String previousStop) {
+    DimensionTopNMetric(SortingOrder ordering, String previousStop) {
         this.ordering = ordering;
         this.previousStop =  previousStop;
     }
@@ -34,14 +35,14 @@ public class DimensionTopNMetric implements TopNMetric {
 
     public static class DimensionTopNMetricBuilder {
 
-        private String ordering;
+        private SortingOrder ordering;
         private String previousStop;
 
         DimensionTopNMetricBuilder() {
 
         }
 
-        public DimensionTopNMetricBuilder withOrdering(String ordering) {
+        public DimensionTopNMetricBuilder withOrdering(SortingOrder ordering) {
             this.ordering = ordering;
             return this;
         }

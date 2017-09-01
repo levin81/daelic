@@ -1,15 +1,16 @@
 package com.github.levin81.daelic.druid.limitspec;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.github.levin81.daelic.druid.sorting.SortingOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderByColumn {
 
     private String dimension;
     private String direction;
-    private String dimensionOrder;
+    private SortingOrder dimensionOrder;
 
-    OrderByColumn(String dimension, String direction, String dimensionOrder) {
+    OrderByColumn(String dimension, String direction, SortingOrder dimensionOrder) {
         this.dimension = dimension;
         this.direction = direction;
         this.dimensionOrder = dimensionOrder;
@@ -23,7 +24,7 @@ public class OrderByColumn {
         return direction;
     }
 
-    public String getDimensionOrder() {
+    public SortingOrder getDimensionOrder() {
         return dimensionOrder;
     }
 
@@ -35,7 +36,7 @@ public class OrderByColumn {
 
         private String dimension;
         private String direction;
-        private String dimensionOrder;
+        private SortingOrder dimensionOrder;
 
         public OrderByColumnBuilder withDimension(String dimension) {
             this.dimension = dimension;
@@ -47,7 +48,7 @@ public class OrderByColumn {
             return this;
         }
 
-        public OrderByColumnBuilder withDimensionOrder(String dimensionOrder) {
+        public OrderByColumnBuilder withDimensionOrder(SortingOrder dimensionOrder) {
             this.dimensionOrder = dimensionOrder;
             return this;
         }

@@ -33,8 +33,9 @@ public class TopN {
     private List<Interval> intervals;
     private Context context;
 
-    TopN(DataSource dataSource, Dimension dimension, int threshold, TopNMetric metric, Granularity granularity, Filter filter,
-         List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals, Context context) {
+    TopN(DataSource dataSource, Dimension dimension, int threshold, TopNMetric metric, Granularity granularity,
+         Filter filter, List<Aggregator> aggregations, List<PostAggregator> postAggregations, List<Interval> intervals,
+         Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
         Properties.assertRequired(dimension, "Dimension is a required property");
         Properties.assertRequired(metric, "Metric is a required property");
