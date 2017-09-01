@@ -1,19 +1,22 @@
 package com.github.levin81.daelic.druid.context;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.Period;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupByV1Context extends Context {
 
     private final String groupByStrategy = "v1";
 
-    private boolean groupByIsSingleThreaded;
-    private int maxIntermediateRows;
-    private int maxResults;
-    private boolean useOffHeap;
+    private Boolean groupByIsSingleThreaded;
+    private Integer maxIntermediateRows;
+    private Integer maxResults;
+    private Boolean useOffHeap;
 
-    GroupByV1Context(int timeout, int priority, String queryId, boolean useCache, boolean populateCache,
-                     boolean bySegment, boolean finalize, Period chunkPeriod, boolean groupByIsSingleThreaded,
-                     int maxIntermediateRows, int maxResults, boolean useOffHeap) {
+    GroupByV1Context(Integer timeout, Integer priority, String queryId, Boolean useCache, Boolean populateCache,
+                     Boolean bySegment, Boolean finalize, Period chunkPeriod, Boolean groupByIsSingleThreaded,
+                     Integer maxIntermediateRows, Integer maxResults, Boolean useOffHeap) {
 
         super(timeout, priority, queryId, useCache, populateCache, bySegment, finalize, chunkPeriod);
 
@@ -27,19 +30,19 @@ public class GroupByV1Context extends Context {
         return groupByStrategy;
     }
 
-    public boolean isGroupByIsSingleThreaded() {
+    public Boolean getGroupByIsSingleThreaded() {
         return groupByIsSingleThreaded;
     }
 
-    public int getMaxIntermediateRows() {
+    public Integer getMaxIntermediateRows() {
         return maxIntermediateRows;
     }
 
-    public int getMaxResults() {
+    public Integer getMaxResults() {
         return maxResults;
     }
 
-    public boolean isUseOffHeap() {
+    public Boolean getUseOffHeap() {
         return useOffHeap;
     }
 
@@ -49,31 +52,31 @@ public class GroupByV1Context extends Context {
 
     public static class GroupByV1ContextBuilder extends ContextBuilder<GroupByV1ContextBuilder> {
 
-        private boolean groupByIsSingleThreaded;
-        private int maxIntermediateRows;
-        private int maxResults;
-        private boolean useOffHeap;
+        private Boolean groupByIsSingleThreaded;
+        private Integer maxIntermediateRows;
+        private Integer maxResults;
+        private Boolean useOffHeap;
 
         GroupByV1ContextBuilder() {
 
         }
 
-        public GroupByV1ContextBuilder withGroupByIsSingleThreaded(boolean groupByIsSingleThreaded) {
+        public GroupByV1ContextBuilder withGroupByIsSingleThreaded(Boolean groupByIsSingleThreaded) {
             this.groupByIsSingleThreaded = groupByIsSingleThreaded;
             return this;
         }
 
-        public GroupByV1ContextBuilder withMaxIntermediateRows(int maxIntermediateRows) {
+        public GroupByV1ContextBuilder withMaxIntermediateRows(Integer maxIntermediateRows) {
             this.maxIntermediateRows = maxIntermediateRows;
             return this;
         }
 
-        public GroupByV1ContextBuilder withMaxResults(int maxResults) {
+        public GroupByV1ContextBuilder withMaxResults(Integer maxResults) {
             this.maxResults = maxResults;
             return this;
         }
 
-        public GroupByV1ContextBuilder withUseOffHeap(boolean useOffHeap) {
+        public GroupByV1ContextBuilder withUseOffHeap(Boolean useOffHeap) {
             this.useOffHeap = useOffHeap;
             return this;
         }

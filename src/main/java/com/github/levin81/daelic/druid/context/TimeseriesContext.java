@@ -4,17 +4,17 @@ import java.time.Period;
 
 public class TimeseriesContext extends Context {
 
-    private boolean skipEmptyBuckets;
+    private Boolean skipEmptyBuckets;
 
-    TimeseriesContext(int timeout, int priority, String queryId, boolean useCache, boolean populateCache,
-                      boolean bySegment, boolean finalize, Period chunkPeriod, boolean skipEmptyBuckets) {
+    TimeseriesContext(Integer timeout, Integer priority, String queryId, Boolean useCache, Boolean populateCache,
+                      Boolean bySegment, Boolean finalize, Period chunkPeriod, Boolean skipEmptyBuckets) {
 
         super(timeout, priority, queryId, useCache, populateCache, bySegment, finalize, chunkPeriod);
 
         this.skipEmptyBuckets = skipEmptyBuckets;
     }
 
-    public boolean isSkipEmptyBuckets() {
+    public Boolean isSkipEmptyBuckets() {
         return skipEmptyBuckets;
     }
 
@@ -24,13 +24,13 @@ public class TimeseriesContext extends Context {
 
     public static class TimeseriesContextBuilder extends ContextBuilder<TimeseriesContextBuilder> {
 
-        private boolean skipEmptyBuckets;
+        private Boolean skipEmptyBuckets;
 
         TimeseriesContextBuilder() {
 
         }
 
-        public TimeseriesContextBuilder withSkipEmptyBuckets(boolean skipEmptyBuckets) {
+        public TimeseriesContextBuilder withSkipEmptyBuckets(Boolean skipEmptyBuckets) {
             this.skipEmptyBuckets = skipEmptyBuckets;
             return this;
         }

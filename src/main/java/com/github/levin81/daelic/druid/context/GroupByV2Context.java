@@ -1,21 +1,24 @@
 package com.github.levin81.daelic.druid.context;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.Period;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupByV2Context extends Context {
 
     private final String groupByStrategy = "v2";
 
-    private int bufferGrouperInitialBuckets;
-    private int bufferGrouperMaxLoadFactor;
-    private int maxMergingDictionarySize;
-    private int maxOnDiskStorage;
-    private boolean sortByDimsFirst;
+    private Integer bufferGrouperInitialBuckets;
+    private Integer bufferGrouperMaxLoadFactor;
+    private Integer maxMergingDictionarySize;
+    private Integer maxOnDiskStorage;
+    private Boolean sortByDimsFirst;
 
-    GroupByV2Context(int timeout, int priority, String queryId, boolean useCache, boolean populateCache,
-                     boolean bySegment, boolean finalize, Period chunkPeriod, int bufferGrouperInitialBuckets,
-                     int bufferGrouperMaxLoadFactor, int maxMergingDictionarySize, int maxOnDiskStorage,
-                     boolean sortByDimsFirst) {
+    GroupByV2Context(Integer timeout, Integer priority, String queryId, Boolean useCache, Boolean populateCache,
+                     Boolean bySegment, Boolean finalize, Period chunkPeriod, Integer bufferGrouperInitialBuckets,
+                     Integer bufferGrouperMaxLoadFactor, Integer maxMergingDictionarySize, Integer maxOnDiskStorage,
+                     Boolean sortByDimsFirst) {
 
         super(timeout, priority, queryId, useCache, populateCache, bySegment, finalize, chunkPeriod);
 
@@ -30,23 +33,23 @@ public class GroupByV2Context extends Context {
         return groupByStrategy;
     }
 
-    public int getBufferGrouperInitialBuckets() {
+    public Integer getBufferGrouperInitialBuckets() {
         return bufferGrouperInitialBuckets;
     }
 
-    public int getBufferGrouperMaxLoadFactor() {
+    public Integer getBufferGrouperMaxLoadFactor() {
         return bufferGrouperMaxLoadFactor;
     }
 
-    public int getMaxMergingDictionarySize() {
+    public Integer getMaxMergingDictionarySize() {
         return maxMergingDictionarySize;
     }
 
-    public int getMaxOnDiskStorage() {
+    public Integer getMaxOnDiskStorage() {
         return maxOnDiskStorage;
     }
 
-    public boolean isSortByDimsFirst() {
+    public Boolean isSortByDimsFirst() {
         return sortByDimsFirst;
     }
 
@@ -56,33 +59,33 @@ public class GroupByV2Context extends Context {
 
     public static class GroupByV2ContextBuilder extends ContextBuilder<GroupByV2ContextBuilder> {
 
-        private int bufferGrouperInitialBuckets;
-        private int bufferGrouperMaxLoadFactor;
-        private int maxMergingDictionarySize;
-        private int maxOnDiskStorage;
-        private boolean sortByDimsFirst;
+        private Integer bufferGrouperInitialBuckets;
+        private Integer bufferGrouperMaxLoadFactor;
+        private Integer maxMergingDictionarySize;
+        private Integer maxOnDiskStorage;
+        private Boolean sortByDimsFirst;
 
-        public GroupByV2ContextBuilder withBufferGrouperInitialBuckets(int bufferGrouperInitialBuckets) {
+        public GroupByV2ContextBuilder withBufferGrouperInitialBuckets(Integer bufferGrouperInitialBuckets) {
             this.bufferGrouperInitialBuckets = bufferGrouperInitialBuckets;
             return this;
         }
 
-        public GroupByV2ContextBuilder withBufferGrouperMaxLoadFactor(int bufferGrouperMaxLoadFactor) {
+        public GroupByV2ContextBuilder withBufferGrouperMaxLoadFactor(Integer bufferGrouperMaxLoadFactor) {
             this.bufferGrouperMaxLoadFactor = bufferGrouperMaxLoadFactor;
             return this;
         }
 
-        public GroupByV2ContextBuilder withMaxMergingDictionarySize(int maxMergingDictionarySize) {
+        public GroupByV2ContextBuilder withMaxMergingDictionarySize(Integer maxMergingDictionarySize) {
             this.maxMergingDictionarySize = maxMergingDictionarySize;
             return this;
         }
 
-        public GroupByV2ContextBuilder withMaxOnDiskStorage(int maxOnDiskStorage) {
+        public GroupByV2ContextBuilder withMaxOnDiskStorage(Integer maxOnDiskStorage) {
             this.maxOnDiskStorage = maxOnDiskStorage;
             return this;
         }
 
-        public GroupByV2ContextBuilder withSortByDimsFirst(boolean sortByDimsFirst) {
+        public GroupByV2ContextBuilder withSortByDimsFirst(Boolean sortByDimsFirst) {
             this.sortByDimsFirst = sortByDimsFirst;
             return this;
         }

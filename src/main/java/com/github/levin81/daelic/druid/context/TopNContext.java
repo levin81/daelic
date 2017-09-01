@@ -4,17 +4,17 @@ import java.time.Period;
 
 public class TopNContext extends Context {
 
-    private int minTopNThreshold;
+    private Integer minTopNThreshold;
 
-    TopNContext(int timeout, int priority, String queryId, boolean useCache, boolean populateCache,
-                boolean bySegment, boolean finalize, Period chunkPeriod, int minTopNThreshold) {
+    TopNContext(Integer timeout, Integer priority, String queryId, Boolean useCache, Boolean populateCache,
+                Boolean bySegment, Boolean finalize, Period chunkPeriod, Integer minTopNThreshold) {
 
         super(timeout, priority, queryId, useCache, populateCache, bySegment, finalize, chunkPeriod);
 
         this.minTopNThreshold = minTopNThreshold;
     }
 
-    public int getMinTopNThreshold() {
+    public Integer getMinTopNThreshold() {
         return minTopNThreshold;
     }
 
@@ -24,13 +24,13 @@ public class TopNContext extends Context {
 
     public static class TopNContextBuilder extends ContextBuilder<TopNContextBuilder> {
 
-        private int minTopNThreshold;
+        private Integer minTopNThreshold;
 
         TopNContextBuilder() {
 
         }
 
-        public TopNContextBuilder withMinTopNThreshold(int minTopNThreshold) {
+        public TopNContextBuilder withMinTopNThreshold(Integer minTopNThreshold) {
             this.minTopNThreshold = minTopNThreshold;
             return this;
         }

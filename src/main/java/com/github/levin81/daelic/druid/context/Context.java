@@ -1,20 +1,23 @@
 package com.github.levin81.daelic.druid.context;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.Period;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class Context {
 
-    private int timeout;
-    private int priority;
+    private Integer timeout;
+    private Integer priority;
     private String queryId;
-    private boolean useCache;
-    private boolean populateCache;
-    private boolean bySegment;
-    private boolean finalize;
+    private Boolean useCache;
+    private Boolean populateCache;
+    private Boolean bySegment;
+    private Boolean finalize;
     private Period chunkPeriod;
 
-    Context(int timeout, int priority, String queryId, boolean useCache, boolean populateCache,
-            boolean bySegment, boolean finalize, Period chunkPeriod) {
+    Context(Integer timeout, Integer priority, String queryId, Boolean useCache, Boolean populateCache,
+            Boolean bySegment, Boolean finalize, Period chunkPeriod) {
         this.timeout = timeout;
         this.priority = priority;
         this.queryId = queryId;
@@ -25,11 +28,11 @@ public abstract class Context {
         this.chunkPeriod = chunkPeriod;
     }
 
-    public int getTimeout() {
+    public Integer getTimeout() {
         return timeout;
     }
 
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -37,19 +40,19 @@ public abstract class Context {
         return queryId;
     }
 
-    public boolean isUseCache() {
+    public Boolean getUseCache() {
         return useCache;
     }
 
-    public boolean isPopulateCache() {
+    public Boolean getPopulateCache() {
         return populateCache;
     }
 
-    public boolean isBySegment() {
+    public Boolean getBySegment() {
         return bySegment;
     }
 
-    public boolean isFinalize() {
+    public Boolean getFinalize() {
         return finalize;
     }
 
@@ -60,25 +63,25 @@ public abstract class Context {
     @SuppressWarnings(value = {"unchecked"})
     protected static abstract class ContextBuilder<T extends ContextBuilder<?>> {
 
-        int timeout;
-        int priority;
+        Integer timeout;
+        Integer priority;
         String queryId;
-        boolean useCache;
-        boolean populateCache;
-        boolean bySegment;
-        boolean finalize;
+        Boolean useCache;
+        Boolean populateCache;
+        Boolean bySegment;
+        Boolean finalize;
         Period chunkPeriod;
 
         ContextBuilder() {
 
         }
 
-        public T withTimeout(int timeout) {
+        public T withTimeout(Integer timeout) {
             this.timeout = timeout;
             return (T) this;
         }
 
-        public T withPriority(int priority) {
+        public T withPriority(Integer priority) {
             this.priority = priority;
             return (T) this;
         }
@@ -88,22 +91,22 @@ public abstract class Context {
             return (T) this;
         }
 
-        public T withUseCache(boolean useCache) {
+        public T withUseCache(Boolean useCache) {
             this.useCache = useCache;
             return (T) this;
         }
 
-        public T withPopulateCache(boolean populateCache) {
+        public T withPopulateCache(Boolean populateCache) {
             this.populateCache = populateCache;
             return (T) this;
         }
 
-        public T withBySegment(boolean bySegment) {
+        public T withBySegment(Boolean bySegment) {
             this.bySegment = bySegment;
             return (T) this;
         }
 
-        public T withFinalize(boolean finalize) {
+        public T withFinalize(Boolean finalize) {
             this.finalize = finalize;
             return (T) this;
         }

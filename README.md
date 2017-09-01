@@ -27,7 +27,7 @@ A library for easy query object building and query result parsing for Apache Dru
 ## TODO
 - Javadocs
 - Assertions
-- Contexts
+- ~~Contexts~~
 - ~~ExtractionFns - Time Parsing, Time Format~~
 - ~~Lookups - Namespace~~
 - Filters - ~~Bound, Interval, Search,~~ Spatial
