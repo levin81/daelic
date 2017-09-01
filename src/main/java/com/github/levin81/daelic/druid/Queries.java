@@ -10,8 +10,8 @@ public final class Queries {
         return Search.builder();
     }
 
-    public static void SELECT() {
-
+    public static Select.SelectBuilder SELECT() {
+        return Select.builder();
     }
 
     public static Timeseries.TimeseriesBuilder TIMESERIES() {
