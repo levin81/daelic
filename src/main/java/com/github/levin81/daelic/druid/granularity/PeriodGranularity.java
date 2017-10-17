@@ -1,15 +1,11 @@
 package com.github.levin81.daelic.druid.granularity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.github.levin81.daelic.util.Properties;
 
-import java.time.OffsetDateTime;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 
 /**
  * Period granularities are specified as arbitrary period combinations of years, months, weeks, hours, minutes and
@@ -24,11 +20,11 @@ public class PeriodGranularity implements Granularity {
 
     private final String type = "period";
 
-    private Period period;
+    private String period;
     private ZoneId timeZone;
     private OffsetDateTime origin;
 
-    PeriodGranularity(Period period, ZoneId timeZone, OffsetDateTime origin) {
+    PeriodGranularity(String period, ZoneId timeZone, OffsetDateTime origin) {
         Properties.assertRequired(period, "Period is a required property");
 
         this.period = period;
@@ -41,8 +37,7 @@ public class PeriodGranularity implements Granularity {
         return type;
     }
 
-    @JsonSerialize(using = ToStringSerializer.class)
-    public Period getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
@@ -62,7 +57,7 @@ public class PeriodGranularity implements Granularity {
 
     public static class PeriodGranularityBuilder {
 
-        private Period period;
+        private String period;
         private ZoneId timeZone;
         private OffsetDateTime origin;
 
@@ -71,6 +66,16 @@ public class PeriodGranularity implements Granularity {
         }
 
         public PeriodGranularityBuilder withPeriod(Period period) {
+            this.period = period.toString();
+            return this;
+        }
+
+        public PeriodGranularityBuilder withPeriod(Duration duration) {
+            this.period = duration.toString();
+            return this;
+        }
+
+        public PeriodGranularityBuilder withPeriod(String period) {
             this.period = period;
             return this;
         }
