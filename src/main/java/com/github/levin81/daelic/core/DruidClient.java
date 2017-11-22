@@ -2,18 +2,23 @@ package com.github.levin81.daelic.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.levin81.daelic.druid.GroupBy;
+import com.github.levin81.daelic.druid.Select;
 import com.github.levin81.daelic.druid.Timeseries;
 import com.github.levin81.daelic.druid.TopN;
 import com.github.levin81.daelic.druid.result.GroupByResult;
+import com.github.levin81.daelic.druid.result.SelectResult;
 import com.github.levin81.daelic.druid.result.TimeseriesResult;
 import com.github.levin81.daelic.druid.result.TopNResult;
+import com.github.levin81.daelic.exception.DruidException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class DruidClient {
 
@@ -33,19 +38,27 @@ public class DruidClient {
         this.mapper = mapper;
     }
 
-    public GroupByResult query(GroupBy groupBy) throws IOException {
+    public GroupByResult query(GroupBy groupBy) throws IOException, DruidException {
         return query(groupBy, GroupByResult.class);
     }
 
-    public TopNResult query(TopN topN) throws IOException {
+    public SelectResult select(Select select) throws IOException, DruidException {
+        return query(select, SelectResult.class);
+    }
+
+    public SelectResult select(Select select, Map<String, Integer> pagingIdentifier) {
+        return null;
+    }
+
+    public TopNResult query(TopN topN) throws IOException, DruidException {
         return query(topN, TopNResult.class);
     }
 
-    public TimeseriesResult query(Timeseries timeseries) throws IOException {
+    public TimeseriesResult query(Timeseries timeseries) throws IOException, DruidException {
         return query(timeseries, TimeseriesResult.class);
     }
 
-    private <REQ, RESP> RESP query(REQ request, Class<RESP> clazz) throws IOException {
+    private <REQ, RESP> RESP query(REQ request, Class<RESP> clazz) throws IOException, DruidException {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(configuration.getUrl());
 
@@ -54,9 +67,14 @@ public class DruidClient {
         httpPost.setHeader("Content-type", "application/json");
 
         CloseableHttpResponse response = client.execute(httpPost);
-        RESP result = mapper.readValue(response.getEntity().getContent(), clazz);
-        client.close();
+        String content = EntityUtils.toString(response.getEntity());
 
-        return result;
+        try {
+            return mapper.readValue(content, clazz);
+        } catch (Exception ex) {
+            throw new DruidException(content);
+        } finally {
+            client.close();
+        }
     }
 }
