@@ -11,11 +11,14 @@ import com.github.levin81.daelic.druid.filter.Filter;
 import com.github.levin81.daelic.druid.granularity.Granularity;
 import com.github.levin81.daelic.druid.havingspec.HavingSpec;
 import com.github.levin81.daelic.druid.limitspec.LimitSpec;
+import com.github.levin81.daelic.druid.limitspec.LimitSpecs;
 import com.github.levin81.daelic.druid.postaggregator.PostAggregator;
 import com.github.levin81.daelic.util.Properties;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GroupBy {
@@ -37,7 +40,6 @@ public class GroupBy {
             List<Aggregator> aggregations, List<PostAggregator> postAggregations, HavingSpec having, List<Interval> intervals,
             Context context) {
         Properties.assertRequired(dataSource, "DataSource is a required property");
-        Properties.assertRequired(dimensions, "Dimensions is a required property");
         Properties.assertRequired(granularity, "Granularity is a required property");
         Properties.assertRequired(intervals, "Intervals is a required property");
 
@@ -136,6 +138,23 @@ public class GroupBy {
             return this;
         }
 
+        public GroupByBuilder withDimensions(Dimension... dimensions) {
+            this.dimensions = new ArrayList<>(Arrays.asList(dimensions));
+            return this;
+        }
+
+        public GroupByBuilder withDimensions(String... dimensions) {
+            this.dimensions = new ArrayList<>(
+                    Arrays.stream(dimensions)
+                            .map(dimension ->
+                                    DefaultDimension.builder().withDimension(dimension).build()
+                            )
+                            .collect(Collectors.toList())
+            );
+
+            return this;
+        }
+
         public GroupByBuilder addDimension(Dimension dimension) {
             if (this.dimensions == null) {
                 this.dimensions = new ArrayList<>();
@@ -156,6 +175,11 @@ public class GroupBy {
 
         public GroupByBuilder withLimitSpec(LimitSpec limitSpec) {
             this.limitSpec = limitSpec;
+            return this;
+        }
+
+        public GroupByBuilder withLimitSpec(int limit) {
+            this.limitSpec = LimitSpecs.DEFAULT().withLimit(limit).build();
             return this;
         }
 
