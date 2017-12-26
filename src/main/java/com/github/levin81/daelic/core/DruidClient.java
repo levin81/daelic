@@ -62,7 +62,7 @@ public class DruidClient {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(configuration.getUrl());
 
-        StringEntity entity = new StringEntity(mapper.writeValueAsString(request));
+        StringEntity entity = new StringEntity(mapper.writeValueAsString(request), "UTF-8");
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-type", "application/json");
 
