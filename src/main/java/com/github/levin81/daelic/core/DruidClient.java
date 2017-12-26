@@ -65,7 +65,7 @@ public class DruidClient {
         httpPost.setHeader("Content-type", "application/json");
 
         CloseableHttpResponse response = client.execute(httpPost);
-        String content = EntityUtils.toString(response.getEntity());
+        String content = EntityUtils.toString(response.getEntity(), configuration.getCharset());
 
         try {
             return mapper.readValue(content, clazz);
