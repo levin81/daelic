@@ -2,11 +2,9 @@ package com.github.levin81.daelic.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.levin81.daelic.druid.GroupBy;
-import com.github.levin81.daelic.druid.Select;
 import com.github.levin81.daelic.druid.Timeseries;
 import com.github.levin81.daelic.druid.TopN;
 import com.github.levin81.daelic.druid.result.GroupByResult;
-import com.github.levin81.daelic.druid.result.SelectResult;
 import com.github.levin81.daelic.druid.result.TimeseriesResult;
 import com.github.levin81.daelic.druid.result.TopNResult;
 import com.github.levin81.daelic.exception.DruidException;
@@ -18,7 +16,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class DruidClient {
 
@@ -42,13 +39,14 @@ public class DruidClient {
         return query(groupBy, GroupByResult.class);
     }
 
-    public SelectResult select(Select select) throws IOException, DruidException {
+    /* public SelectResult select(Select select) throws IOException, DruidException {
         return query(select, SelectResult.class);
     }
 
     public SelectResult select(Select select, Map<String, Integer> pagingIdentifier) {
         return null;
     }
+    */
 
     public TopNResult query(TopN topN) throws IOException, DruidException {
         return query(topN, TopNResult.class);
@@ -62,7 +60,7 @@ public class DruidClient {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(configuration.getUrl());
 
-        StringEntity entity = new StringEntity(mapper.writeValueAsString(request));
+        StringEntity entity = new StringEntity(mapper.writeValueAsString(request), configuration.getCharset());
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-type", "application/json");
 
