@@ -8,6 +8,7 @@ public class DruidConfiguration {
     private static final String DEFAULT_ENDPOINT = "druid/v2";
     private static final String DEFAULT_HOST = "localhost";
     private static final int DEFAULT_PORT = 8082;
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     private final String host;
     private final int port;
@@ -23,12 +24,16 @@ public class DruidConfiguration {
         this.charset = charset;
     }
 
+    public DruidConfiguration(String host, int port) {
+        this(host, port, DEFAULT_CHARSET);
+    }
+
     public DruidConfiguration(String host) {
-        this(host, DEFAULT_PORT, StandardCharsets.UTF_8);
+        this(host, DEFAULT_PORT, DEFAULT_CHARSET);
     }
 
     public DruidConfiguration() {
-        this(DEFAULT_HOST, DEFAULT_PORT, StandardCharsets.UTF_8);
+        this(DEFAULT_HOST, DEFAULT_PORT, DEFAULT_CHARSET);
     }
 
     public String getHost() {
